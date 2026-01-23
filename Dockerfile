@@ -21,9 +21,10 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 
 # Configure CUPS for network access and AirPrint
 RUN sed -i 's/Listen localhost:631/Listen 0.0.0.0:631/' /etc/cups/cupsd.conf && \
-    sed -i 's/<Location \/>/<Location \/>\n  Allow @LOCAL/' /etc/cups/cupsd.conf && \
-    sed -i 's/<Location \/admin>/<Location \/admin>\n  Allow @LOCAL/' /etc/cups/cupsd.conf && \
-    sed -i 's/<Location \/admin\/conf>/<Location \/admin\/conf>\n  Allow @LOCAL/' /etc/cups/cupsd.conf && \
+    sed -i 's/<Location \/>/<Location \/>\n  Allow all/' /etc/cups/cupsd.conf && \
+    sed -i 's/<Location \/admin>/<Location \/admin>\n  Allow all/' /etc/cups/cupsd.conf && \
+    sed -i 's/<Location \/admin\/conf>/<Location \/admin\/conf>\n  Allow all/' /etc/cups/cupsd.conf && \
+    sed -i 's/Order allow,deny/Order deny,allow/' /etc/cups/cupsd.conf && \
     echo "ServerAlias *" >> /etc/cups/cupsd.conf && \
     echo "DefaultEncryption Never" >> /etc/cups/cupsd.conf && \
     echo "Browsing On" >> /etc/cups/cupsd.conf && \
