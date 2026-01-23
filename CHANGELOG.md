@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.3](https://github.com/lucasilverentand/labelwriter-4xl/compare/v1.1.2...v1.1.3) (2026-01-23)
+
+
+### Bug Fixes
+
+* disable CUPS Bonjour when using custom name ([a615f26](https://github.com/lucasilverentand/labelwriter-4xl/commit/a615f26258e95f2996d1ffd16ce0b9419e23bce0))
+
 ## [1.1.2](https://github.com/lucasilverentand/labelwriter-4xl/compare/v1.1.1...v1.1.2) (2026-01-23)
 
 
