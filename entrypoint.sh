@@ -45,16 +45,50 @@ if [ "$ENABLE_AVAHI" = "true" ]; then
 <!DOCTYPE service-group SYSTEM "avahi-service.dtd">
 <service-group>
   <name>$PRINTER_BONJOUR_NAME</name>
+
+  <!-- IPP service for standard printing -->
   <service>
     <type>_ipp._tcp</type>
+    <subtype>_universal._sub._ipp._tcp</subtype>
     <port>631</port>
     <txt-record>txtvers=1</txt-record>
     <txt-record>qtotal=1</txt-record>
     <txt-record>rp=printers/labelwriter-4xl</txt-record>
     <txt-record>ty=DYMO LabelWriter 4XL</txt-record>
-    <txt-record>pdl=application/pdf,image/jpeg,image/png</txt-record>
+    <txt-record>adminurl=http://localhost:631/printers/labelwriter-4xl</txt-record>
+    <txt-record>note=Network Label Printer</txt-record>
+    <txt-record>priority=0</txt-record>
+    <txt-record>product=(DYMO LabelWriter 4XL)</txt-record>
+    <txt-record>pdl=application/octet-stream,application/pdf,application/postscript,image/jpeg,image/png,image/pwg-raster,image/urf</txt-record>
+    <txt-record>URF=W8,SRGB24,CP1,RS300</txt-record>
+    <txt-record>Color=F</txt-record>
+    <txt-record>Duplex=F</txt-record>
+    <txt-record>Copies=T</txt-record>
     <txt-record>printer-state=3</txt-record>
-    <txt-record>printer-type=0x2</txt-record>
+    <txt-record>printer-type=0x801046</txt-record>
+  </service>
+
+  <!-- IPPS (secure) service -->
+  <service>
+    <type>_ipps._tcp</type>
+    <subtype>_universal._sub._ipps._tcp</subtype>
+    <port>631</port>
+    <txt-record>txtvers=1</txt-record>
+    <txt-record>qtotal=1</txt-record>
+    <txt-record>rp=printers/labelwriter-4xl</txt-record>
+    <txt-record>ty=DYMO LabelWriter 4XL</txt-record>
+    <txt-record>adminurl=https://localhost:631/printers/labelwriter-4xl</txt-record>
+    <txt-record>note=Network Label Printer</txt-record>
+    <txt-record>priority=0</txt-record>
+    <txt-record>product=(DYMO LabelWriter 4XL)</txt-record>
+    <txt-record>pdl=application/octet-stream,application/pdf,application/postscript,image/jpeg,image/png,image/pwg-raster,image/urf</txt-record>
+    <txt-record>URF=W8,SRGB24,CP1,RS300</txt-record>
+    <txt-record>Color=F</txt-record>
+    <txt-record>Duplex=F</txt-record>
+    <txt-record>Copies=T</txt-record>
+    <txt-record>TLS=1.2</txt-record>
+    <txt-record>printer-state=3</txt-record>
+    <txt-record>printer-type=0x801046</txt-record>
   </service>
 </service-group>
 EOF

@@ -6,11 +6,12 @@ LABEL org.opencontainers.image.title="CUPS with DYMO LabelWriter 4XL"
 LABEL org.opencontainers.image.description="CUPS print server with DYMO LabelWriter drivers for network label printing"
 LABEL org.opencontainers.image.source="https://github.com/lucasilverentand/labelwriter-4xl"
 
-# Install CUPS and DYMO drivers
+# Install CUPS, DYMO drivers, and AirPrint support
 RUN apt-get update && apt-get install -y --no-install-recommends \
     cups \
     cups-client \
     cups-bsd \
+    cups-filters \
     printer-driver-dymo \
     avahi-daemon \
     libnss-mdns \
@@ -18,13 +19,16 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
-# Configure CUPS for network access
+# Configure CUPS for network access and AirPrint
 RUN sed -i 's/Listen localhost:631/Listen 0.0.0.0:631/' /etc/cups/cupsd.conf && \
     sed -i 's/<Location \/>/<Location \/>\n  Allow @LOCAL/' /etc/cups/cupsd.conf && \
     sed -i 's/<Location \/admin>/<Location \/admin>\n  Allow @LOCAL/' /etc/cups/cupsd.conf && \
     sed -i 's/<Location \/admin\/conf>/<Location \/admin\/conf>\n  Allow @LOCAL/' /etc/cups/cupsd.conf && \
     echo "ServerAlias *" >> /etc/cups/cupsd.conf && \
-    echo "DefaultEncryption Never" >> /etc/cups/cupsd.conf
+    echo "DefaultEncryption Never" >> /etc/cups/cupsd.conf && \
+    echo "Browsing On" >> /etc/cups/cupsd.conf && \
+    echo "WebInterface Yes" >> /etc/cups/cupsd.conf && \
+    echo "DefaultShared Yes" >> /etc/cups/cupsd.conf
 
 # Expose CUPS port
 EXPOSE 631
