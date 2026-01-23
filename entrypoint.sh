@@ -45,36 +45,33 @@ configure_labelwriter() {
     # Find the printer URI
     PRINTER_URI=$(lpinfo -v 2>/dev/null | grep -i "dymo" | grep -i "4xl" | head -1 | awk '{print $2}')
 
-    if [ -n "$PRINTER_URI" ]; then
-        echo "Found LabelWriter 4XL at: $PRINTER_URI"
-        # Add the printer with the correct PPD
-        lpadmin -p labelwriter-4xl \
-            -D "DYMO LabelWriter 4XL" \
-            -L "Network Label Printer" \
-            -v "$PRINTER_URI" \
-            -m drv:///sample.drv/dymo.ppd 2>/dev/null || \
-        lpadmin -p labelwriter-4xl \
-            -D "DYMO LabelWriter 4XL" \
-            -L "Network Label Printer" \
-            -v "$PRINTER_URI" \
-            -P /usr/share/ppd/dymo/lw4xl.ppd 2>/dev/null || \
-        lpadmin -p labelwriter-4xl \
-            -D "DYMO LabelWriter 4XL" \
-            -L "Network Label Printer" \
-            -v "$PRINTER_URI" \
-            -m everywhere 2>/dev/null || true
-
-        # Enable and accept jobs
-        cupsenable labelwriter-4xl 2>/dev/null || true
-        cupsaccept labelwriter-4xl 2>/dev/null || true
-
-        # Set as default printer
-        lpadmin -d labelwriter-4xl 2>/dev/null || true
-
-        echo "LabelWriter 4XL configured successfully"
-    else
+    if [ -z "$PRINTER_URI" ]; then
         echo "LabelWriter 4XL not detected, skipping auto-configuration"
+        return
     fi
+
+    echo "Found LabelWriter 4XL at: $PRINTER_URI"
+
+    # Try PPD sources in order of preference
+    PRINTER_NAME="labelwriter-4xl"
+    PRINTER_DESC="DYMO LabelWriter 4XL"
+    PRINTER_LOC="Network Label Printer"
+    PPD_SOURCES="drv:///sample.drv/dymo.ppd /usr/share/ppd/dymo/lw4xl.ppd everywhere"
+
+    for ppd in $PPD_SOURCES; do
+        if [ "$ppd" = "everywhere" ]; then
+            lpadmin -p "$PRINTER_NAME" -D "$PRINTER_DESC" -L "$PRINTER_LOC" -v "$PRINTER_URI" -m "$ppd" 2>/dev/null && break
+        else
+            lpadmin -p "$PRINTER_NAME" -D "$PRINTER_DESC" -L "$PRINTER_LOC" -v "$PRINTER_URI" -P "$ppd" 2>/dev/null && break
+        fi
+    done
+
+    # Enable printer and accept jobs
+    cupsenable "$PRINTER_NAME" 2>/dev/null || true
+    cupsaccept "$PRINTER_NAME" 2>/dev/null || true
+    lpadmin -d "$PRINTER_NAME" 2>/dev/null || true
+
+    echo "LabelWriter 4XL configured successfully"
 }
 
 # Run auto-configuration in background after CUPS starts

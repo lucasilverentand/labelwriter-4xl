@@ -26,15 +26,11 @@ RUN sed -i 's/Listen localhost:631/Listen 0.0.0.0:631/' /etc/cups/cupsd.conf && 
     echo "ServerAlias *" >> /etc/cups/cupsd.conf && \
     echo "DefaultEncryption Never" >> /etc/cups/cupsd.conf
 
-# Create cups user for admin access
-RUN useradd -r -G lpadmin -M cups 2>/dev/null || true
-
 # Expose CUPS port
 EXPOSE 631
 
 # Copy entrypoint script
-COPY entrypoint.sh /entrypoint.sh
-RUN chmod +x /entrypoint.sh
+COPY --chmod=755 entrypoint.sh /entrypoint.sh
 
 # Persistent storage for CUPS configuration
 VOLUME ["/etc/cups"]
