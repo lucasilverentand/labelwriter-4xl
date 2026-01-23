@@ -3,11 +3,26 @@ set -e
 
 # Set admin password if provided
 if [ -n "$CUPS_ADMIN_PASSWORD" ]; then
-    echo "Setting CUPS admin password..."
-    echo "${CUPS_ADMIN_USER:-admin}:${CUPS_ADMIN_PASSWORD}" | chpasswd
-    # Ensure admin user exists and is in lpadmin group
-    id -u "${CUPS_ADMIN_USER:-admin}" &>/dev/null || useradd -M "${CUPS_ADMIN_USER:-admin}"
-    usermod -aG lpadmin "${CUPS_ADMIN_USER:-admin}"
+    ADMIN_USER="${CUPS_ADMIN_USER:-admin}"
+    echo "Setting CUPS admin password for user: $ADMIN_USER"
+
+    # Ensure admin user exists first
+    if ! id -u "$ADMIN_USER" &>/dev/null; then
+        useradd -M "$ADMIN_USER"
+    fi
+
+    # Add user to lpadmin group for CUPS admin access
+    usermod -aG lpadmin "$ADMIN_USER"
+
+    # Set password by directly modifying /etc/shadow (bypasses PAM issues on ARM64)
+    PASSWORD_HASH=$(openssl passwd -6 "$CUPS_ADMIN_PASSWORD")
+    if grep -q "^${ADMIN_USER}:" /etc/shadow; then
+        sed -i "s|^${ADMIN_USER}:[^:]*:|${ADMIN_USER}:${PASSWORD_HASH}:|" /etc/shadow
+    else
+        echo "${ADMIN_USER}:${PASSWORD_HASH}:19000:0:99999:7:::" >> /etc/shadow
+    fi
+
+    echo "CUPS admin user configured successfully"
 fi
 
 # Start avahi for printer discovery (optional)
