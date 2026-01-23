@@ -87,8 +87,8 @@ configure_labelwriter() {
     PRINTER_DESC="DYMO LabelWriter 4XL"
     PRINTER_LOC="Network Label Printer"
 
-    # Use the DYMO LabelWriter 4XL driver
-    if ! lpadmin -p "$PRINTER_NAME" -D "$PRINTER_DESC" -L "$PRINTER_LOC" -v "$PRINTER_URI" -m "dymo:0/cups/model/lw4xl.ppd" -E 2>/dev/null; then
+    # Use the custom LabelWriter 4XL PPD with comprehensive label sizes
+    if ! lpadmin -p "$PRINTER_NAME" -D "$PRINTER_DESC" -L "$PRINTER_LOC" -v "$PRINTER_URI" -P "/usr/share/ppd/dymo/lw4xl.ppd" -E 2>/dev/null; then
         echo "Warning: Failed to configure printer with DYMO driver"
         return
     fi

@@ -1,0 +1,249 @@
+*PPD-Adobe: "4.3"
+*%%%% PPD file for DYMO LabelWriter 4XL with comprehensive label sizes
+*%%%% Custom PPD for network print server
+*FormatVersion: "4.3"
+*FileVersion: "1.0"
+*LanguageVersion: English
+*LanguageEncoding: ISOLatin1
+*PCFileName: "lw4xl.ppd"
+*Product: "(DYMO LabelWriter 4XL)"
+*Manufacturer: "DYMO"
+*ModelName: "DYMO LabelWriter 4XL"
+*ShortNickName: "DYMO LabelWriter 4XL"
+*NickName: "DYMO LabelWriter 4XL"
+*PSVersion: "(3010.000) 0"
+*LanguageLevel: "3"
+*ColorDevice: False
+*DefaultColorSpace: Gray
+*FileSystem: False
+*Throughput: "8"
+*LandscapeOrientation: Plus90
+*TTRasterizer: Type42
+*cupsSNMPSupplies: "false"
+*cupsVersion: 2.3
+*cupsModelNumber: 0
+*cupsManualCopies: True
+*cupsFilter: "application/vnd.cups-raster 50 rastertolabel"
+
+*% ========== 4XL EXCLUSIVE LABELS (Extra Wide up to 4.16") ==========
+
+*OpenUI *PageSize/Media Size: PickOne
+*OrderDependency: 10 AnySetup *PageSize
+*DefaultPageSize: w288h432
+
+*% 4XL Exclusive - Extra Large Shipping Labels
+*PageSize w288h432/4x6 Shipping (1744907): "<</PageSize[288 432]/ImagingBBox null>>setpagedevice"
+*PageSize w288h166/4x2.31 Shipping: "<</PageSize[288 166]/ImagingBBox null>>setpagedevice"
+*PageSize w295h451/4XL Shipping 104x159mm (S0904980): "<</PageSize[295 451]/ImagingBBox null>>setpagedevice"
+*PageSize w300h432/4.16x6 Max Width: "<</PageSize[300 432]/ImagingBBox null>>setpagedevice"
+*PageSize w288h288/4x4 Square: "<</PageSize[288 288]/ImagingBBox null>>setpagedevice"
+*PageSize w288h216/4x3: "<</PageSize[288 216]/ImagingBBox null>>setpagedevice"
+*PageSize w288h360/4x5: "<</PageSize[288 360]/ImagingBBox null>>setpagedevice"
+*PageSize w288h504/4x7: "<</PageSize[288 504]/ImagingBBox null>>setpagedevice"
+
+*% Standard Shipping Labels
+*PageSize w167h288/30256 Large Shipping 2.31x4: "<</PageSize[167 288]/ImagingBBox null>>setpagedevice"
+*PageSize w153h288/30323 Shipping 2.13x4: "<</PageSize[153 288]/ImagingBBox null>>setpagedevice"
+*PageSize w162h288/30857 Name Badge 2.25x4: "<</PageSize[162 288]/ImagingBBox null>>setpagedevice"
+
+*% Address Labels
+*PageSize w79h252/99010 Address 28x89mm: "<</PageSize[79 252]/ImagingBBox null>>setpagedevice"
+*PageSize w81h252/30252 Address 1.13x3.5: "<</PageSize[81 252]/ImagingBBox null>>setpagedevice"
+*PageSize w101h252/30321 Large Address 1.4x3.5: "<</PageSize[101 252]/ImagingBBox null>>setpagedevice"
+*PageSize w54h144/30330 Return Address 0.75x2: "<</PageSize[54 144]/ImagingBBox null>>setpagedevice"
+
+*% Multipurpose Labels
+*PageSize w72h72/30332 Square 1x1: "<</PageSize[72 72]/ImagingBBox null>>setpagedevice"
+*PageSize w36h72/30333 Small 0.5x1: "<</PageSize[36 72]/ImagingBBox null>>setpagedevice"
+*PageSize w162h90/30334 Medium Multi 2.25x1.25: "<</PageSize[162 90]/ImagingBBox null>>setpagedevice"
+*PageSize w72h153/30336 Multi 1x2.13: "<</PageSize[72 153]/ImagingBBox null>>setpagedevice"
+*PageSize w72h108/30347 Multi 1x1.5: "<</PageSize[72 108]/ImagingBBox null>>setpagedevice"
+*PageSize w153h198/30324 Diskette 2.13x2.75: "<</PageSize[153 198]/ImagingBBox null>>setpagedevice"
+
+*% File/Folder Labels
+*PageSize w41h248/30277 File Folder 0.56x3.44: "<</PageSize[41 248]/ImagingBBox null>>setpagedevice"
+*PageSize w41h144/Hanging Folder 0.56x2: "<</PageSize[41 144]/ImagingBBox null>>setpagedevice"
+*PageSize w36h135/30346 Library 0.5x1.88: "<</PageSize[36 135]/ImagingBBox null>>setpagedevice"
+
+*% Specialty Labels
+*PageSize w63h68/30373 Price Tag 0.88x0.94: "<</PageSize[63 68]/ImagingBBox null>>setpagedevice"
+*PageSize w117h90/30915 Barcode 1.63x1.25: "<</PageSize[117 90]/ImagingBBox null>>setpagedevice"
+*PageSize w162h225/30859 Paint Can: "<</PageSize[162 225]/ImagingBBox null>>setpagedevice"
+
+*% Internet Postage
+*PageSize w167h540/99019 Internet Postage 2-Part: "<</PageSize[167 540]/ImagingBBox null>>setpagedevice"
+*PageSize w167h504/Internet Postage 3-Part: "<</PageSize[167 504]/ImagingBBox null>>setpagedevice"
+
+*% Continuous/Custom
+*PageSize w288h72/4 Wide Continuous (per inch): "<</PageSize[288 72]/ImagingBBox null>>setpagedevice"
+
+*CloseUI: *PageSize
+
+*OpenUI *PageRegion/Media Size: PickOne
+*OrderDependency: 10 AnySetup *PageRegion
+*DefaultPageRegion: w288h432
+
+*PageRegion w288h432/4x6 Shipping (1744907): "<</PageSize[288 432]/ImagingBBox null>>setpagedevice"
+*PageRegion w288h166/4x2.31 Shipping: "<</PageSize[288 166]/ImagingBBox null>>setpagedevice"
+*PageRegion w295h451/4XL Shipping 104x159mm (S0904980): "<</PageSize[295 451]/ImagingBBox null>>setpagedevice"
+*PageRegion w300h432/4.16x6 Max Width: "<</PageSize[300 432]/ImagingBBox null>>setpagedevice"
+*PageRegion w288h288/4x4 Square: "<</PageSize[288 288]/ImagingBBox null>>setpagedevice"
+*PageRegion w288h216/4x3: "<</PageSize[288 216]/ImagingBBox null>>setpagedevice"
+*PageRegion w288h360/4x5: "<</PageSize[288 360]/ImagingBBox null>>setpagedevice"
+*PageRegion w288h504/4x7: "<</PageSize[288 504]/ImagingBBox null>>setpagedevice"
+*PageRegion w167h288/30256 Large Shipping 2.31x4: "<</PageSize[167 288]/ImagingBBox null>>setpagedevice"
+*PageRegion w153h288/30323 Shipping 2.13x4: "<</PageSize[153 288]/ImagingBBox null>>setpagedevice"
+*PageRegion w162h288/30857 Name Badge 2.25x4: "<</PageSize[162 288]/ImagingBBox null>>setpagedevice"
+*PageRegion w79h252/99010 Address 28x89mm: "<</PageSize[79 252]/ImagingBBox null>>setpagedevice"
+*PageRegion w81h252/30252 Address 1.13x3.5: "<</PageSize[81 252]/ImagingBBox null>>setpagedevice"
+*PageRegion w101h252/30321 Large Address 1.4x3.5: "<</PageSize[101 252]/ImagingBBox null>>setpagedevice"
+*PageRegion w54h144/30330 Return Address 0.75x2: "<</PageSize[54 144]/ImagingBBox null>>setpagedevice"
+*PageRegion w72h72/30332 Square 1x1: "<</PageSize[72 72]/ImagingBBox null>>setpagedevice"
+*PageRegion w36h72/30333 Small 0.5x1: "<</PageSize[36 72]/ImagingBBox null>>setpagedevice"
+*PageRegion w162h90/30334 Medium Multi 2.25x1.25: "<</PageSize[162 90]/ImagingBBox null>>setpagedevice"
+*PageRegion w72h153/30336 Multi 1x2.13: "<</PageSize[72 153]/ImagingBBox null>>setpagedevice"
+*PageRegion w72h108/30347 Multi 1x1.5: "<</PageSize[72 108]/ImagingBBox null>>setpagedevice"
+*PageRegion w153h198/30324 Diskette 2.13x2.75: "<</PageSize[153 198]/ImagingBBox null>>setpagedevice"
+*PageRegion w41h248/30277 File Folder 0.56x3.44: "<</PageSize[41 248]/ImagingBBox null>>setpagedevice"
+*PageRegion w41h144/Hanging Folder 0.56x2: "<</PageSize[41 144]/ImagingBBox null>>setpagedevice"
+*PageRegion w36h135/30346 Library 0.5x1.88: "<</PageSize[36 135]/ImagingBBox null>>setpagedevice"
+*PageRegion w63h68/30373 Price Tag 0.88x0.94: "<</PageSize[63 68]/ImagingBBox null>>setpagedevice"
+*PageRegion w117h90/30915 Barcode 1.63x1.25: "<</PageSize[117 90]/ImagingBBox null>>setpagedevice"
+*PageRegion w162h225/30859 Paint Can: "<</PageSize[162 225]/ImagingBBox null>>setpagedevice"
+*PageRegion w167h540/99019 Internet Postage 2-Part: "<</PageSize[167 540]/ImagingBBox null>>setpagedevice"
+*PageRegion w167h504/Internet Postage 3-Part: "<</PageSize[167 504]/ImagingBBox null>>setpagedevice"
+*PageRegion w288h72/4 Wide Continuous (per inch): "<</PageSize[288 72]/ImagingBBox null>>setpagedevice"
+
+*CloseUI: *PageRegion
+
+*% Imageable Areas (2pt margin on sides, ~15pt on top/bottom for feed)
+*DefaultImageableArea: w288h432
+*ImageableArea w288h432/4x6 Shipping (1744907): "2 15 286 417"
+*ImageableArea w288h166/4x2.31 Shipping: "2 15 286 151"
+*ImageableArea w295h451/4XL Shipping 104x159mm (S0904980): "2 15 293 436"
+*ImageableArea w300h432/4.16x6 Max Width: "2 15 298 417"
+*ImageableArea w288h288/4x4 Square: "2 15 286 273"
+*ImageableArea w288h216/4x3: "2 15 286 201"
+*ImageableArea w288h360/4x5: "2 15 286 345"
+*ImageableArea w288h504/4x7: "2 15 286 489"
+*ImageableArea w167h288/30256 Large Shipping 2.31x4: "2 15 165 273"
+*ImageableArea w153h288/30323 Shipping 2.13x4: "2 15 151 273"
+*ImageableArea w162h288/30857 Name Badge 2.25x4: "2 15 160 273"
+*ImageableArea w79h252/99010 Address 28x89mm: "2 15 77 237"
+*ImageableArea w81h252/30252 Address 1.13x3.5: "2 15 79 237"
+*ImageableArea w101h252/30321 Large Address 1.4x3.5: "2 15 99 237"
+*ImageableArea w54h144/30330 Return Address 0.75x2: "2 15 52 129"
+*ImageableArea w72h72/30332 Square 1x1: "2 15 70 57"
+*ImageableArea w36h72/30333 Small 0.5x1: "2 15 34 57"
+*ImageableArea w162h90/30334 Medium Multi 2.25x1.25: "2 15 160 75"
+*ImageableArea w72h153/30336 Multi 1x2.13: "2 15 70 138"
+*ImageableArea w72h108/30347 Multi 1x1.5: "2 15 70 93"
+*ImageableArea w153h198/30324 Diskette 2.13x2.75: "2 15 151 183"
+*ImageableArea w41h248/30277 File Folder 0.56x3.44: "2 15 39 233"
+*ImageableArea w41h144/Hanging Folder 0.56x2: "2 15 39 129"
+*ImageableArea w36h135/30346 Library 0.5x1.88: "2 15 34 120"
+*ImageableArea w63h68/30373 Price Tag 0.88x0.94: "2 15 61 53"
+*ImageableArea w117h90/30915 Barcode 1.63x1.25: "2 15 115 75"
+*ImageableArea w162h225/30859 Paint Can: "2 15 160 210"
+*ImageableArea w167h540/99019 Internet Postage 2-Part: "2 15 165 525"
+*ImageableArea w167h504/Internet Postage 3-Part: "2 15 165 489"
+*ImageableArea w288h72/4 Wide Continuous (per inch): "2 15 286 57"
+
+*% Paper Dimensions
+*DefaultPaperDimension: w288h432
+*PaperDimension w288h432/4x6 Shipping (1744907): "288 432"
+*PaperDimension w288h166/4x2.31 Shipping: "288 166"
+*PaperDimension w295h451/4XL Shipping 104x159mm (S0904980): "295 451"
+*PaperDimension w300h432/4.16x6 Max Width: "300 432"
+*PaperDimension w288h288/4x4 Square: "288 288"
+*PaperDimension w288h216/4x3: "288 216"
+*PaperDimension w288h360/4x5: "288 360"
+*PaperDimension w288h504/4x7: "288 504"
+*PaperDimension w167h288/30256 Large Shipping 2.31x4: "167 288"
+*PaperDimension w153h288/30323 Shipping 2.13x4: "153 288"
+*PaperDimension w162h288/30857 Name Badge 2.25x4: "162 288"
+*PaperDimension w79h252/99010 Address 28x89mm: "79 252"
+*PaperDimension w81h252/30252 Address 1.13x3.5: "81 252"
+*PaperDimension w101h252/30321 Large Address 1.4x3.5: "101 252"
+*PaperDimension w54h144/30330 Return Address 0.75x2: "54 144"
+*PaperDimension w72h72/30332 Square 1x1: "72 72"
+*PaperDimension w36h72/30333 Small 0.5x1: "36 72"
+*PaperDimension w162h90/30334 Medium Multi 2.25x1.25: "162 90"
+*PaperDimension w72h153/30336 Multi 1x2.13: "72 153"
+*PaperDimension w72h108/30347 Multi 1x1.5: "72 108"
+*PaperDimension w153h198/30324 Diskette 2.13x2.75: "153 198"
+*PaperDimension w41h248/30277 File Folder 0.56x3.44: "41 248"
+*PaperDimension w41h144/Hanging Folder 0.56x2: "41 144"
+*PaperDimension w36h135/30346 Library 0.5x1.88: "36 135"
+*PaperDimension w63h68/30373 Price Tag 0.88x0.94: "63 68"
+*PaperDimension w117h90/30915 Barcode 1.63x1.25: "117 90"
+*PaperDimension w162h225/30859 Paint Can: "162 225"
+*PaperDimension w167h540/99019 Internet Postage 2-Part: "167 540"
+*PaperDimension w167h504/Internet Postage 3-Part: "167 504"
+*PaperDimension w288h72/4 Wide Continuous (per inch): "288 72"
+
+*% Resolution Options
+*OpenUI *Resolution/Resolution: PickOne
+*OrderDependency: 10 AnySetup *Resolution
+*DefaultResolution: 300dpi
+*Resolution 136dpi/136 DPI (Draft): "<</HWResolution[136 136]/cupsBitsPerColor 1/cupsRowCount 0/cupsRowFeed 0/cupsRowStep 0/cupsColorSpace 3>>setpagedevice"
+*Resolution 203dpi/203 DPI (Normal): "<</HWResolution[203 203]/cupsBitsPerColor 1/cupsRowCount 0/cupsRowFeed 0/cupsRowStep 0/cupsColorSpace 3>>setpagedevice"
+*Resolution 300dpi/300 DPI (Best): "<</HWResolution[300 300]/cupsBitsPerColor 1/cupsRowCount 0/cupsRowFeed 0/cupsRowStep 0/cupsColorSpace 3>>setpagedevice"
+*CloseUI: *Resolution
+
+*% Input Slot (4XL has single roll)
+*OpenUI *InputSlot/Media Source: PickOne
+*OrderDependency: 10 AnySetup *InputSlot
+*DefaultInputSlot: Roll
+*InputSlot Roll/Label Roll: "<</MediaPosition 0>>setpagedevice"
+*CloseUI: *InputSlot
+
+*% Print Darkness
+*OpenUI *cupsDarkness/Print Darkness: PickOne
+*OrderDependency: 10 AnySetup *cupsDarkness
+*DefaultcupsDarkness: Normal
+*cupsDarkness Light/Light: "<</cupsCompression 0>>setpagedevice"
+*cupsDarkness Medium/Medium: "<</cupsCompression 1>>setpagedevice"
+*cupsDarkness Normal/Normal: "<</cupsCompression 2>>setpagedevice"
+*cupsDarkness Dark/Dark: "<</cupsCompression 3>>setpagedevice"
+*CloseUI: *cupsDarkness
+
+*% Standard Fonts
+*DefaultFont: Courier
+*Font AvantGarde-Book: Standard "(1.05)" Standard ROM
+*Font AvantGarde-BookOblique: Standard "(1.05)" Standard ROM
+*Font AvantGarde-Demi: Standard "(1.05)" Standard ROM
+*Font AvantGarde-DemiOblique: Standard "(1.05)" Standard ROM
+*Font Bookman-Demi: Standard "(1.05)" Standard ROM
+*Font Bookman-DemiItalic: Standard "(1.05)" Standard ROM
+*Font Bookman-Light: Standard "(1.05)" Standard ROM
+*Font Bookman-LightItalic: Standard "(1.05)" Standard ROM
+*Font Courier: Standard "(1.05)" Standard ROM
+*Font Courier-Bold: Standard "(1.05)" Standard ROM
+*Font Courier-BoldOblique: Standard "(1.05)" Standard ROM
+*Font Courier-Oblique: Standard "(1.05)" Standard ROM
+*Font Helvetica: Standard "(1.05)" Standard ROM
+*Font Helvetica-Bold: Standard "(1.05)" Standard ROM
+*Font Helvetica-BoldOblique: Standard "(1.05)" Standard ROM
+*Font Helvetica-Narrow: Standard "(1.05)" Standard ROM
+*Font Helvetica-Narrow-Bold: Standard "(1.05)" Standard ROM
+*Font Helvetica-Narrow-BoldOblique: Standard "(1.05)" Standard ROM
+*Font Helvetica-Narrow-Oblique: Standard "(1.05)" Standard ROM
+*Font Helvetica-Oblique: Standard "(1.05)" Standard ROM
+*Font NewCenturySchlbk-Bold: Standard "(1.05)" Standard ROM
+*Font NewCenturySchlbk-BoldItalic: Standard "(1.05)" Standard ROM
+*Font NewCenturySchlbk-Italic: Standard "(1.05)" Standard ROM
+*Font NewCenturySchlbk-Roman: Standard "(1.05)" Standard ROM
+*Font Palatino-Bold: Standard "(1.05)" Standard ROM
+*Font Palatino-BoldItalic: Standard "(1.05)" Standard ROM
+*Font Palatino-Italic: Standard "(1.05)" Standard ROM
+*Font Palatino-Roman: Standard "(1.05)" Standard ROM
+*Font Symbol: Special "(001.005)" Special ROM
+*Font Times-Bold: Standard "(1.05)" Standard ROM
+*Font Times-BoldItalic: Standard "(1.05)" Standard ROM
+*Font Times-Italic: Standard "(1.05)" Standard ROM
+*Font Times-Roman: Standard "(1.05)" Standard ROM
+*Font ZapfChancery-MediumItalic: Standard "(1.05)" Standard ROM
+*Font ZapfDingbats: Special "(001.005)" Special ROM
+
+*% End of lw4xl.ppd

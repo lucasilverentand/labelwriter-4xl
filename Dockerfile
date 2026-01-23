@@ -29,6 +29,9 @@ RUN sed -i 's/Listen localhost:631/Listen 0.0.0.0:631/' /etc/cups/cupsd.conf && 
 # Expose CUPS port
 EXPOSE 631
 
+# Copy custom LabelWriter 4XL PPD with comprehensive label sizes
+COPY lw4xl.ppd /usr/share/ppd/dymo/lw4xl.ppd
+
 # Copy entrypoint script
 COPY --chmod=755 entrypoint.sh /entrypoint.sh
 
