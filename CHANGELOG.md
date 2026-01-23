@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.2.0](https://github.com/lucasilverentand/labelwriter-4xl/compare/v1.1.3...v1.2.0) (2026-01-23)
+
+
+### Features
+
+* add comprehensive 4XL label size support via custom PPD ([3da0e85](https://github.com/lucasilverentand/labelwriter-4xl/commit/3da0e85216e9e7fa2be63097064935241111e8ba))
+
 ## [1.1.3](https://github.com/lucasilverentand/labelwriter-4xl/compare/v1.1.2...v1.1.3) (2026-01-23)
 
 
