@@ -31,6 +31,30 @@ if [ "$ENABLE_AVAHI" = "true" ]; then
     service dbus start
     echo "Starting Avahi daemon for printer discovery..."
     avahi-daemon --daemonize --no-chroot || echo "Warning: Failed to start Avahi"
+
+    # Create custom Avahi service file if PRINTER_BONJOUR_NAME is set
+    if [ -n "$PRINTER_BONJOUR_NAME" ]; then
+        echo "Configuring custom Bonjour name: $PRINTER_BONJOUR_NAME"
+        mkdir -p /etc/avahi/services
+        cat > /etc/avahi/services/labelwriter.service <<EOF
+<?xml version="1.0" standalone='no'?>
+<!DOCTYPE service-group SYSTEM "avahi-service.dtd">
+<service-group>
+  <name>$PRINTER_BONJOUR_NAME</name>
+  <service>
+    <type>_ipp._tcp</type>
+    <port>631</port>
+    <txt-record>txtvers=1</txt-record>
+    <txt-record>qtotal=1</txt-record>
+    <txt-record>rp=printers/labelwriter-4xl</txt-record>
+    <txt-record>ty=DYMO LabelWriter 4XL</txt-record>
+    <txt-record>pdl=application/pdf,image/jpeg,image/png</txt-record>
+    <txt-record>printer-state=3</txt-record>
+    <txt-record>printer-type=0x2</txt-record>
+  </service>
+</service-group>
+EOF
+    fi
 fi
 
 # Auto-configure LabelWriter 4XL if detected
@@ -54,23 +78,18 @@ configure_labelwriter() {
 
     echo "Found LabelWriter 4XL at: $PRINTER_URI"
 
-    # Try PPD sources in order of preference
+    # Configure printer with DYMO driver
     PRINTER_NAME="labelwriter-4xl"
     PRINTER_DESC="DYMO LabelWriter 4XL"
     PRINTER_LOC="Network Label Printer"
-    PPD_SOURCES="drv:///sample.drv/dymo.ppd /usr/share/ppd/dymo/lw4xl.ppd everywhere"
 
-    for ppd in $PPD_SOURCES; do
-        if [ "$ppd" = "everywhere" ]; then
-            lpadmin -p "$PRINTER_NAME" -D "$PRINTER_DESC" -L "$PRINTER_LOC" -v "$PRINTER_URI" -m "$ppd" 2>/dev/null && break
-        else
-            lpadmin -p "$PRINTER_NAME" -D "$PRINTER_DESC" -L "$PRINTER_LOC" -v "$PRINTER_URI" -P "$ppd" 2>/dev/null && break
-        fi
-    done
+    # Use the DYMO LabelWriter 4XL driver
+    if ! lpadmin -p "$PRINTER_NAME" -D "$PRINTER_DESC" -L "$PRINTER_LOC" -v "$PRINTER_URI" -m "dymo:0/cups/model/lw4xl.ppd" -E 2>/dev/null; then
+        echo "Warning: Failed to configure printer with DYMO driver"
+        return
+    fi
 
-    # Enable printer and accept jobs
-    cupsenable "$PRINTER_NAME" 2>/dev/null || true
-    cupsaccept "$PRINTER_NAME" 2>/dev/null || true
+    # Set as default printer
     lpadmin -d "$PRINTER_NAME" 2>/dev/null || true
 
     echo "LabelWriter 4XL configured successfully"

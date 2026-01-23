@@ -54,7 +54,8 @@ volumes:
 | `CUPS_ADMIN_USER` | Username for CUPS admin access | `admin` |
 | `CUPS_ADMIN_PASSWORD` | Password for CUPS admin access | (required) |
 | `TZ` | Timezone | `UTC` |
-| `ENABLE_AVAHI` | Enable Avahi for mDNS discovery | `false` |
+| `ENABLE_AVAHI` | Enable Avahi for Bonjour/mDNS discovery | `false` |
+| `PRINTER_BONJOUR_NAME` | Custom Bonjour service name (requires `ENABLE_AVAHI=true`) | (auto: `DYMO LabelWriter 4XL @ hostname`) |
 
 ## Accessing the Printer
 
