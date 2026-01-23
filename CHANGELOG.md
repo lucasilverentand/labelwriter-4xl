@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.3.1](https://github.com/lucasilverentand/labelwriter-4xl/compare/v1.3.0...v1.3.1) (2026-01-23)
+
+
+### Bug Fixes
+
+* allow all network access to CUPS for AirPrint ([b7a16d8](https://github.com/lucasilverentand/labelwriter-4xl/commit/b7a16d85f7973c4a7aad981db82be88805f9e89b))
+
 ## [1.3.0](https://github.com/lucasilverentand/labelwriter-4xl/compare/v1.2.0...v1.3.0) (2026-01-23)
 
 
