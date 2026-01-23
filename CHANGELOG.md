@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.3.0](https://github.com/lucasilverentand/labelwriter-4xl/compare/v1.2.0...v1.3.0) (2026-01-23)
+
+
+### Features
+
+* improve AirPrint support for macOS clients ([10d9cb8](https://github.com/lucasilverentand/labelwriter-4xl/commit/10d9cb869523fc38a3534b307de0332c28cd1f9e))
+
 ## [1.2.0](https://github.com/lucasilverentand/labelwriter-4xl/compare/v1.1.3...v1.2.0) (2026-01-23)
 
 
