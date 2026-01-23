@@ -27,8 +27,10 @@ fi
 
 # Start avahi for printer discovery (optional)
 if [ "$ENABLE_AVAHI" = "true" ]; then
+    echo "Starting dbus for Avahi..."
+    service dbus start
     echo "Starting Avahi daemon for printer discovery..."
-    avahi-daemon --daemonize --no-chroot 2>/dev/null || true
+    avahi-daemon --daemonize --no-chroot || echo "Warning: Failed to start Avahi"
 fi
 
 # Auto-configure LabelWriter 4XL if detected
