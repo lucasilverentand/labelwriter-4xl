@@ -35,6 +35,10 @@ if [ "$ENABLE_AVAHI" = "true" ]; then
     # Create custom Avahi service file if PRINTER_BONJOUR_NAME is set
     if [ -n "$PRINTER_BONJOUR_NAME" ]; then
         echo "Configuring custom Bonjour name: $PRINTER_BONJOUR_NAME"
+
+        # Disable CUPS's built-in Bonjour advertising
+        sed -i 's/^BrowseLocalProtocols.*/BrowseLocalProtocols none/' /etc/cups/cupsd.conf
+
         mkdir -p /etc/avahi/services
         cat > /etc/avahi/services/labelwriter.service <<EOF
 <?xml version="1.0" standalone='no'?>
